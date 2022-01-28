@@ -10,14 +10,13 @@ USER $NB_USER
 
 RUN conda clean -i 
 
-RUN conda install pycryptosat && conda update -n base conda
+RUN conda install mamba -n base -c conda-forge
 
-RUN conda config --set sat_solver pycryptosat && \
-    conda install -y r-base && \
-    conda install -c conda-forge udunits2 && \
-    conda install -c conda-forge imagemagick && \
-    conda install -c conda-forge r-rstan && \ 
-    conda install -c conda-forge gdal
+RUN mamba install -y r-base && \
+    mamba install -c conda-forge udunits2 && \
+    mamba install -c conda-forge imagemagick && \
+    mamba install -c conda-forge r-rstan && \ 
+    mamba install -c conda-forge gdal
 
 RUN pip install -U matplotlib numpy pandas proj
 
