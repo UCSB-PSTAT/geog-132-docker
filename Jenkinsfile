@@ -13,7 +13,7 @@ pipeline {
                 }
                 stage('Test') {
                     steps {
-                        sh 'podman run -it --rm localhost/geog132 python -c "import gdal; import matplotlib; import numpy; import pandas"'
+                        sh 'podman run -it --rm localhost/geog132 python -c "from osgeo import gdal; import matplotlib; import numpy; import pandas"'
                     }
                 
                 }
