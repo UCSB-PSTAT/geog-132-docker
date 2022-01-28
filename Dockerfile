@@ -16,7 +16,7 @@ RUN mamba install -y r-base && \
     mamba install -c conda-forge udunits2 && \
     mamba install -c conda-forge imagemagick && \
     mamba install -c conda-forge r-rstan && \ 
-    conda install -c conda-forge gdal
+    mamba install -c conda-forge gdal
 
 RUN pip install -U matplotlib numpy pandas proj
 
