@@ -13,11 +13,19 @@ pipeline {
                 }
                 stage('Test') {
                     steps {
-                        sh 'podman run -it --rm localhost/geog132 python -e "import otter"'
+                        sh 'podman run -it --rm localhost/geog132 python -c "import otter"'
                     }
                 
                 }
             }
+        }
+    }
+    post {
+        success {
+            slackSend(channel: '#infrastructure-build', username: 'jenkins', message: "Build ${env.JOB_NAME} ${env.BUILD_NUMBER} just finished successfull! (<${env.BUILD_URL}|Details>)")
+        }
+        failure {
+            slackSend(channel: '#infrastructure-build', username: 'jenkins', message: "Uh Oh! Build ${env.JOB_NAME} ${env.BUILD_NUMBER} had a failure! (<${env.BUILD_URL}|Find out why>).")
         }
     }
 }
