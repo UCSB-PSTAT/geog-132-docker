@@ -4,11 +4,11 @@ LABEL maintainer="LSIT <lsitops@lsit.ucsb.edu>"
 
 USER root
 
-RUN apt update && apt upgrade -yq && apt install build-essential libtool autoconf unzip cmake libgomp1 pkg-config libnlopt-dev g++ -yq && apt-get clean -y
+RUN apt update && apt upgrade -yq && apt install build-essential libtool autoconf unzip cmake libgomp1 pkg-config libnlopt-dev g++ nproc -yq && apt-get clean -y
 
 USER $NB_USER
 
-RUN conda clean -i 
+RUN conda clean -i && conda config --set default_threads $(nproc)
 
 RUN conda install mamba -n base -c conda-forge
 
