@@ -4,7 +4,7 @@ LABEL maintainer="LSIT <lsitops@lsit.ucsb.edu>"
 
 USER root
 
-RUN apt update && apt upgrade -yq && apt install build-essential libtool autoconf unzip cmake libgomp1 -yq && apt-get clean -y
+RUN apt update && apt upgrade -yq && apt install build-essential libtool autoconf unzip cmake libgomp1 pkg-config libnlopt-dev -yq && apt-get clean -y
 
 USER $NB_USER
 
