@@ -8,7 +8,7 @@ pipeline {
             stages{
                 stage('Build') {
                     steps {
-                        sh 'podman build -t geog132 --pull  --no-cache .'
+                        sh 'podman build -t geog132 --pull --force-rm --no-cache .'
                      }
                 }
                 stage('Test') {
